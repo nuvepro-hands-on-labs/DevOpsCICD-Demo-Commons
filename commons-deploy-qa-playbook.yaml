@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: create deployment folders
+      command: mkdir -p /home/ubuntu/deploy-commons/deploymentconfig
+      ignore_errors: True
+
+    - name: remove existing webnet network
+      command: sudo docker network rm webnet
+      ignore_errors: True
+
+    - name: create network webnet
+      command: sudo docker network create webnet
