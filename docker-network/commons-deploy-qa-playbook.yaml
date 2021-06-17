@@ -4,6 +4,30 @@
     - name: create deployment folders
       command: mkdir -p /home/ubuntu/deploy-commons/deploymentconfig
       ignore_errors: True
+    
+    - name: stop running webappjar container
+      command: sudo docker container stop webappjar
+      ignore_errors: True
+
+    - name: remove existing webappjar container
+      command: sudo docker container rm -f webappjar
+      ignore_errors: True
+
+    - name: remove existing webappjar image
+      command: sudo docker rmi webappjar --force
+      ignore_errors: True
+
+    - name: stop running webappwar container
+      command: sudo docker container stop webappwar
+      ignore_errors: True
+    
+    - name: remove existing webappwar container
+      command: sudo docker container rm -f webappwar
+      ignore_errors: True
+
+    - name: remove existing webappwar image
+      command: sudo docker rmi webappwar --force
+      ignore_errors: True
 
     - name: remove existing webnet network
       command: sudo docker network rm webnet
